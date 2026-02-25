@@ -1,0 +1,47 @@
+# =============================================================================
+# Exoplanet Candidate Vetting — Python Dependencies
+# MSc Data Science Dissertation
+# =============================================================================
+# Install with:  pip install -r requirements.txt
+# =============================================================================
+
+# Core scientific stack
+numpy>=1.24.0
+pandas>=1.5.0
+scipy>=1.10.0
+
+# Machine learning
+scikit-learn>=1.1.0
+
+# Visualisation
+matplotlib>=3.6.0
+seaborn>=0.12.0
+
+# Jupyter notebooks
+jupyter>=1.0.0
+notebook>=6.5.0
+ipykernel>=6.0.0
+ipywidgets>=8.0.0
+
+# Utilities
+tqdm>=4.65.0
+
+# =============================================================================
+# Optional — Deep Learning (uncomment for GPU training / Keras reference impl)
+# =============================================================================
+# tensorflow>=2.12.0
+# torch>=2.0.0
+# torchvision>=0.15.0
+
+# =============================================================================
+# Optional — Additional ML baselines
+# =============================================================================
+xgboost>=1.7.0
+lightgbm>=3.3.0
+
+# =============================================================================
+# Development & code quality
+# =============================================================================
+pytest>=7.0.0
+black>=23.0.0
+flake8>=6.0.0
