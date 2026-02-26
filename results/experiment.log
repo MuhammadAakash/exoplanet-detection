@@ -1,0 +1,28 @@
+2026-02-26 00:19:46 | INFO     | src.utils.seed | All random seeds fixed to 42.
+2026-02-26 00:19:46 | INFO     | __main__ | Loading raw data from: /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/data/raw/koi_data.csv
+2026-02-26 00:19:46 | INFO     | __main__ | Raw data loaded — shape: (3901, 141)
+2026-02-26 00:19:46 | INFO     | __main__ | Dropping 39 non-informative columns.
+2026-02-26 00:19:46 | INFO     | __main__ | Target distribution after encoding:
+label
+0    2341
+1    1083
+2     477
+Name: count, dtype: int64
+2026-02-26 00:19:46 | INFO     | __main__ | Feature matrix shape: (3901, 37)  |  Target shape: (3901,)
+2026-02-26 00:19:46 | INFO     | __main__ | Splitting data — train:70%  val:15%  test:15%
+2026-02-26 00:19:46 | INFO     | __main__ | Split sizes — train: 2730  val: 585  test: 586
+2026-02-26 00:19:46 | INFO     | __main__ | Imputing missing values with strategy='median'
+2026-02-26 00:19:46 | INFO     | __main__ | Imputation complete.
+2026-02-26 00:19:46 | INFO     | __main__ | Fitting StandardScaler on training data.
+2026-02-26 00:19:46 | INFO     | __main__ | Feature scaling complete.
+2026-02-26 00:19:46 | INFO     | __main__ | Splits saved to /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/data/processed
+2026-02-26 00:19:46 | INFO     | __main__ | Scaler saved → /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/results/models/scaler.pkl
+2026-02-26 00:19:46 | INFO     | __main__ | Imputer saved → /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/results/models/imputer.pkl
+2026-02-26 00:19:47 | INFO     | __main__ | Full processed dataframe → /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/data/processed/koi_processed.csv
+2026-02-26 00:19:47 | INFO     | __main__ | ============================================================
+2026-02-26 00:19:47 | INFO     | __main__ | Preprocessing pipeline complete.
+2026-02-26 00:19:47 | INFO     | __main__ |   Training samples  : 2730
+2026-02-26 00:19:47 | INFO     | __main__ |   Validation samples: 585
+2026-02-26 00:19:47 | INFO     | __main__ |   Test samples      : 586
+2026-02-26 00:19:47 | INFO     | __main__ |   Features          : 37
+2026-02-26 00:19:47 | INFO     | __main__ | ============================================================
