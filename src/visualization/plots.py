@@ -12,6 +12,12 @@ plot_class_distribution      – Bar chart of label frequencies
 plot_correlation_heatmap     – Feature correlation heatmap
 plot_missing_values          – Horizontal bar chart of missing-value rates
 plot_feature_distributions   – Grid of histograms per feature group
+plot_confusion_matrix        – Annotated confusion matrix heat-map
+plot_roc_curves              – One-vs-Rest ROC curves for all classes
+plot_precision_recall_curves – PR curves for all classes
+plot_training_history        – Loss and accuracy over epochs (CNN)
+plot_feature_importance      – Horizontal bar chart (Random Forest / XGBoost)
+plot_model_comparison        – Grouped bar chart comparing all models
 
 Usage
 -----
@@ -30,7 +36,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import seaborn as sns
-
+from sklearn.metrics import (
+    confusion_matrix,
+    roc_curve,
+    auc,
+    precision_recall_curve,
+)
+from sklearn.preprocessing import label_binarize
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
@@ -232,5 +244,305 @@ def plot_feature_distributions(
         axes[j].set_visible(False)
 
     fig.suptitle("Feature Distributions by KOI Disposition", fontsize=13, fontweight="bold", y=1.01)
+    fig.tight_layout()
+    _save_or_show(fig, filename, save)
+
+
+# ---------------------------------------------------------------------------
+# 5. Confusion matrix
+# ---------------------------------------------------------------------------
+
+def plot_confusion_matrix(
+    y_true: np.ndarray,
+    y_pred: np.ndarray,
+    labels: List[str] = CLASS_NAMES,
+    title: str = "Confusion Matrix",
+    save: bool = True,
+    filename: str = "confusion_matrix.png",
+) -> None:
+    """
+    Annotated, normalised confusion matrix heat-map.
+
+    Both raw counts and row-normalised percentages are shown in each cell.
+
+    Parameters
+    ----------
+    y_true  : np.ndarray  – Ground-truth integer labels.
+    y_pred  : np.ndarray  – Predicted integer labels.
+    labels  : list[str]   – Human-readable class names (in label-integer order).
+    title   : str
+    save    : bool
+    """
+    cm      = confusion_matrix(y_true, y_pred)
+    cm_norm = cm.astype(float) / cm.sum(axis=1, keepdims=True)
+
+    fig, ax = plt.subplots(figsize=(8, 6))
+    sns.heatmap(
+        cm_norm, annot=False, fmt=".2f",
+        cmap="Blues", linewidths=0.5,
+        xticklabels=labels, yticklabels=labels,
+        ax=ax, cbar_kws={"label": "Proportion"},
+        vmin=0, vmax=1,
+    )
+
+    # Annotate cells with count (top) and % (bottom)
+    for i in range(cm.shape[0]):
+        for j in range(cm.shape[1]):
+            ax.text(
+                j + 0.5, i + 0.38,
+                f"{cm[i, j]}",
+                ha="center", va="center",
+                fontsize=11, fontweight="bold",
+                color="white" if cm_norm[i, j] > 0.5 else "black",
+            )
+            ax.text(
+                j + 0.5, i + 0.65,
+                f"({cm_norm[i, j]:.1%})",
+                ha="center", va="center",
+                fontsize=8,
+                color="white" if cm_norm[i, j] > 0.5 else "black",
+            )
+
+    ax.set_xlabel("Predicted Label", fontsize=11)
+    ax.set_ylabel("True Label", fontsize=11)
+    ax.set_title(title, fontsize=13, fontweight="bold", pad=12)
+    fig.tight_layout()
+    _save_or_show(fig, filename, save)
+
+
+# ---------------------------------------------------------------------------
+# 6. ROC curves (One-vs-Rest)
+# ---------------------------------------------------------------------------
+
+def plot_roc_curves(
+    y_true: np.ndarray,
+    y_prob: np.ndarray,
+    labels: List[str] = CLASS_NAMES,
+    title: str = "ROC Curves (One-vs-Rest)",
+    save: bool = True,
+    filename: str = "roc_curves.png",
+) -> None:
+    """
+    One-vs-Rest ROC curves for each class with AUC scores in the legend.
+
+    Parameters
+    ----------
+    y_true : np.ndarray  – Integer ground-truth labels (shape N,).
+    y_prob : np.ndarray  – Predicted probabilities (shape N × C).
+    labels : list[str]   – Class names.
+    title  : str
+    save   : bool
+    """
+    n_classes = len(labels)
+    y_bin = label_binarize(y_true, classes=list(range(n_classes)))
+
+    fig, ax = plt.subplots(figsize=PLOT_FIGSIZE)
+    colors = [PALETTE[0], PALETTE[1], PALETTE[2], "#9b59b6", "#f39c12"]
+
+    for i, (label, color) in enumerate(zip(labels, colors)):
+        if y_bin.shape[1] == 1:
+            # Binary case
+            fpr, tpr, _ = roc_curve(y_bin[:, 0], y_prob[:, i])
+        else:
+            fpr, tpr, _ = roc_curve(y_bin[:, i], y_prob[:, i])
+        roc_auc = auc(fpr, tpr)
+        ax.plot(fpr, tpr, color=color, lw=2,
+                label=f"{label}  (AUC = {roc_auc:.3f})")
+
+    ax.plot([0, 1], [0, 1], "k--", lw=1.2, label="Random (AUC = 0.500)")
+    ax.set_xlim([0, 1])
+    ax.set_ylim([0, 1.02])
+    ax.set_xlabel("False Positive Rate", fontsize=12)
+    ax.set_ylabel("True Positive Rate", fontsize=12)
+    ax.set_title(title, fontsize=13, fontweight="bold", pad=12)
+    ax.legend(loc="lower right", fontsize=10)
+    fig.tight_layout()
+    _save_or_show(fig, filename, save)
+
+
+# ---------------------------------------------------------------------------
+# 7. Precision-Recall curves
+# ---------------------------------------------------------------------------
+
+def plot_precision_recall_curves(
+    y_true: np.ndarray,
+    y_prob: np.ndarray,
+    labels: List[str] = CLASS_NAMES,
+    title: str = "Precision-Recall Curves",
+    save: bool = True,
+    filename: str = "pr_curves.png",
+) -> None:
+    """
+    Precision-Recall curves for each class.  Particularly informative for
+    imbalanced datasets like this one.
+
+    Parameters
+    ----------
+    y_true : np.ndarray
+    y_prob : np.ndarray  – Shape (N, C)
+    labels : list[str]
+    title  : str
+    save   : bool
+    """
+    n_classes = len(labels)
+    y_bin  = label_binarize(y_true, classes=list(range(n_classes)))
+    colors = [PALETTE[0], PALETTE[1], PALETTE[2]]
+
+    fig, ax = plt.subplots(figsize=PLOT_FIGSIZE)
+    for i, (label, color) in enumerate(zip(labels, colors)):
+        col = y_bin[:, i] if y_bin.ndim > 1 else y_bin[:, 0]
+        precision, recall, _ = precision_recall_curve(col, y_prob[:, i])
+        pr_auc = auc(recall, precision)
+        ax.plot(recall, precision, color=color, lw=2,
+                label=f"{label}  (AP = {pr_auc:.3f})")
+
+    ax.set_xlabel("Recall", fontsize=12)
+    ax.set_ylabel("Precision", fontsize=12)
+    ax.set_title(title, fontsize=13, fontweight="bold", pad=12)
+    ax.legend(loc="upper right", fontsize=10)
+    fig.tight_layout()
+    _save_or_show(fig, filename, save)
+
+
+# ---------------------------------------------------------------------------
+# 8. Training history (CNN)
+# ---------------------------------------------------------------------------
+
+def plot_training_history(
+    history: Dict[str, List[float]],
+    model_name: str = "Genesis CNN",
+    save: bool = True,
+    filename: str = "training_history.png",
+) -> None:
+    """
+    Two-panel plot of training/validation loss and accuracy across epochs.
+
+    Parameters
+    ----------
+    history    : dict  – Keys: 'loss', 'val_loss', 'accuracy', 'val_accuracy'
+    model_name : str
+    save       : bool
+    """
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13, 5))
+
+    # --- Loss panel ---
+    ax1.plot(history.get("loss", []),     label="Train Loss", color=PALETTE[2], lw=2)
+    ax1.plot(history.get("val_loss", []), label="Val Loss",   color=PALETTE[1], lw=2, linestyle="--")
+    ax1.set_xlabel("Epoch", fontsize=11)
+    ax1.set_ylabel("Loss", fontsize=11)
+    ax1.set_title(f"{model_name} — Loss", fontsize=12, fontweight="bold")
+    ax1.legend()
+
+    # --- Accuracy panel ---
+    ax2.plot(history.get("accuracy", []),     label="Train Acc", color=PALETTE[0], lw=2)
+    ax2.plot(history.get("val_accuracy", []), label="Val Acc",   color=PALETTE[1], lw=2, linestyle="--")
+    ax2.set_xlabel("Epoch", fontsize=11)
+    ax2.set_ylabel("Accuracy", fontsize=11)
+    ax2.set_title(f"{model_name} — Accuracy", fontsize=12, fontweight="bold")
+    ax2.set_ylim([0, 1])
+    ax2.legend()
+
+    fig.suptitle(f"{model_name} Training History", fontsize=14, fontweight="bold", y=1.02)
+    fig.tight_layout()
+    _save_or_show(fig, filename, save)
+
+
+# ---------------------------------------------------------------------------
+# 9. Feature importance
+# ---------------------------------------------------------------------------
+
+def plot_feature_importance(
+    importances: np.ndarray,
+    feature_names: List[str],
+    model_name: str = "Random Forest",
+    top_n: int = 20,
+    save: bool = True,
+    filename: str = "feature_importance.png",
+) -> None:
+    """
+    Horizontal bar chart of the top-N most important features.
+
+    Parameters
+    ----------
+    importances   : np.ndarray  – Feature importance scores.
+    feature_names : list[str]
+    model_name    : str
+    top_n         : int         – Show only the top N features.
+    save          : bool
+    """
+    idx = np.argsort(importances)[-top_n:]
+    top_names  = [feature_names[i] for i in idx]
+    top_scores = importances[idx]
+
+    fig, ax = plt.subplots(figsize=(9, max(5, top_n * 0.4)))
+    bars = ax.barh(top_names, top_scores, color=PALETTE[2], alpha=0.85, edgecolor="white")
+    ax.set_xlabel("Importance Score", fontsize=11)
+    ax.set_title(f"Top-{top_n} Feature Importances — {model_name}",
+                 fontsize=12, fontweight="bold")
+    fig.tight_layout()
+    _save_or_show(fig, filename, save)
+
+
+# ---------------------------------------------------------------------------
+# 10. Model comparison bar chart
+# ---------------------------------------------------------------------------
+
+def plot_model_comparison(
+    results: Dict[str, Dict[str, float]],
+    metrics: List[str] = ["accuracy", "f1_macro", "roc_auc_macro"],
+    save: bool = True,
+    filename: str = "model_comparison.png",
+) -> None:
+    """
+    Grouped bar chart comparing all models across key metrics.
+
+    Parameters
+    ----------
+    results : dict
+        Nested dict: {model_name: {metric_name: value, ...}, ...}
+    metrics : list[str]
+        Which metrics to show.  Must be keys in each model's inner dict.
+    save    : bool
+
+    Example
+    -------
+    results = {
+        "Random Forest" : {"accuracy": 0.88, "f1_macro": 0.85, "roc_auc_macro": 0.91},
+        "Genesis CNN"   : {"accuracy": 0.91, "f1_macro": 0.89, "roc_auc_macro": 0.95},
+    }
+    """
+    model_names = list(results.keys())
+    n_models    = len(model_names)
+    n_metrics   = len(metrics)
+    x = np.arange(n_models)
+    width = 0.8 / n_metrics
+    bar_colors = ["#3498db", "#2ecc71", "#e74c3c", "#9b59b6", "#f39c12"]
+
+    fig, ax = plt.subplots(figsize=(max(10, n_models * 2), 6))
+
+    for i, metric in enumerate(metrics):
+        values = [results[m].get(metric, 0) for m in model_names]
+        offset = (i - n_metrics / 2 + 0.5) * width
+        rects  = ax.bar(
+            x + offset, values, width * 0.9,
+            label=metric.replace("_", " ").title(),
+            color=bar_colors[i % len(bar_colors)],
+            alpha=0.85, edgecolor="white",
+        )
+        # Value labels on bars
+        for rect, val in zip(rects, values):
+            ax.text(
+                rect.get_x() + rect.get_width() / 2,
+                rect.get_height() + 0.005,
+                f"{val:.3f}", ha="center", va="bottom", fontsize=8,
+            )
+
+    ax.set_xticks(x)
+    ax.set_xticklabels(model_names, fontsize=10, rotation=15, ha="right")
+    ax.set_ylim(0, 1.12)
+    ax.set_ylabel("Score", fontsize=11)
+    ax.set_title("Model Performance Comparison", fontsize=13, fontweight="bold")
+    ax.legend(fontsize=10, loc="upper left")
+    ax.axhline(y=1.0, color="gray", linestyle="--", linewidth=0.7, alpha=0.5)
     fig.tight_layout()
     _save_or_show(fig, filename, save)

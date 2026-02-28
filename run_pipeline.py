@@ -95,3 +95,9 @@ def stage2_eda(processed_file):
     log.info("  Feature distributions plot saved.")
 
     log.info("EDA complete — 4 figures saved to results/figures/")
+
+
+def stage3_classical_ml():
+    """Train and evaluate Random Forest, SVM and Logistic Regression."""
+    from src.models.classical_ml import train_and_evaluate_all
+    return train_and_evaluate_all()
