@@ -1,0 +1,11 @@
+{
+  "total_samples": 3901,
+  "raw_columns": 141,
+  "processed_columns": 103,
+  "class_counts": {
+    "CONFIRMED": 2341,
+    "FALSE POSITIVE": 1083,
+    "CANDIDATE": 477
+  },
+  "imbalance_ratio": 4.908
+}

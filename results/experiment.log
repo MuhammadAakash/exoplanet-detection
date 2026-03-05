@@ -26,3 +26,228 @@ Name: count, dtype: int64
 2026-02-26 00:19:47 | INFO     | __main__ |   Test samples      : 586
 2026-02-26 00:19:47 | INFO     | __main__ |   Features          : 37
 2026-02-26 00:19:47 | INFO     | __main__ | ============================================================
+2026-03-05 06:41:16 | INFO     | src.utils.seed | All random seeds fixed to 42.
+2026-03-05 06:41:16 | INFO     | run_pipeline | 
+╔══════════════════════════════════════════════════════╗
+2026-03-05 06:41:16 | INFO     | run_pipeline | ║  EXOPLANET CANDIDATE VETTING — PIPELINE RUNNER      ║
+2026-03-05 06:41:16 | INFO     | run_pipeline | ║  MSc Data Science Dissertation                       ║
+2026-03-05 06:41:16 | INFO     | run_pipeline | ╚══════════════════════════════════════════════════════╝
+
+2026-03-05 06:41:16 | INFO     | run_pipeline | Running stages: [1, 2, 3, 4, 5, 6]
+
+2026-03-05 06:41:16 | INFO     | run_pipeline | 
+##############################################################
+#  STAGE 1: Data Preprocessing
+##############################################################
+2026-03-05 06:41:16 | INFO     | src.utils.seed | All random seeds fixed to 42.
+2026-03-05 06:41:16 | INFO     | src.data.preprocess | Loading raw data from: /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/data/raw/koi_data.csv
+2026-03-05 06:41:16 | INFO     | src.data.preprocess | Raw data loaded — shape: (3901, 141)
+2026-03-05 06:41:16 | INFO     | src.data.preprocess | Dropping 39 non-informative columns.
+2026-03-05 06:41:16 | INFO     | src.data.preprocess | Target distribution after encoding:
+label
+0    2341
+1    1083
+2     477
+Name: count, dtype: int64
+2026-03-05 06:41:16 | INFO     | src.data.preprocess | Feature matrix shape: (3901, 37)  |  Target shape: (3901,)
+2026-03-05 06:41:16 | INFO     | src.data.preprocess | Splitting data — train:70%  val:15%  test:15%
+2026-03-05 06:41:16 | INFO     | src.data.preprocess | Split sizes — train: 2730  val: 585  test: 586
+2026-03-05 06:41:16 | INFO     | src.data.preprocess | Imputing missing values with strategy='median'
+2026-03-05 06:41:16 | INFO     | src.data.preprocess | Imputation complete.
+2026-03-05 06:41:16 | INFO     | src.data.preprocess | Fitting StandardScaler on training data.
+2026-03-05 06:41:16 | INFO     | src.data.preprocess | Feature scaling complete.
+2026-03-05 06:41:17 | INFO     | src.data.preprocess | Splits saved to /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/data/processed
+2026-03-05 06:41:17 | INFO     | src.data.preprocess | Scaler saved → /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/results/models/scaler.pkl
+2026-03-05 06:41:17 | INFO     | src.data.preprocess | Imputer saved → /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/results/models/imputer.pkl
+2026-03-05 06:41:17 | INFO     | src.data.preprocess | Full processed dataframe → /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/data/processed/koi_processed.csv
+2026-03-05 06:41:17 | INFO     | src.data.preprocess | ============================================================
+2026-03-05 06:41:17 | INFO     | src.data.preprocess | Preprocessing pipeline complete.
+2026-03-05 06:41:17 | INFO     | src.data.preprocess |   Training samples  : 2730
+2026-03-05 06:41:17 | INFO     | src.data.preprocess |   Validation samples: 585
+2026-03-05 06:41:17 | INFO     | src.data.preprocess |   Test samples      : 586
+2026-03-05 06:41:17 | INFO     | src.data.preprocess |   Features          : 37
+2026-03-05 06:41:17 | INFO     | src.data.preprocess | ============================================================
+2026-03-05 06:41:17 | INFO     | run_pipeline | Stage 1 completed in 1.3s
+2026-03-05 06:41:17 | INFO     | run_pipeline | 
+##############################################################
+#  STAGE 2: Exploratory Data Analysis
+##############################################################
+2026-03-05 06:41:17 | ERROR    | run_pipeline | Stage 2 FAILED: 'module' object is not callable
+Traceback (most recent call last):
+  File "/home/mohammad-aakash/Data_Science_Project/exoplanet-detection/run_pipeline.py", line 43, in run_stage
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/mohammad-aakash/Data_Science_Project/exoplanet-detection/run_pipeline.py", line 62, in stage2_eda
+    run_eda()
+TypeError: 'module' object is not callable
+2026-03-05 06:45:54 | INFO     | src.utils.seed | All random seeds fixed to 42.
+2026-03-05 06:45:54 | INFO     | run_pipeline | 
+╔══════════════════════════════════════════════════════╗
+2026-03-05 06:45:54 | INFO     | run_pipeline | ║  EXOPLANET CANDIDATE VETTING — PIPELINE RUNNER      ║
+2026-03-05 06:45:54 | INFO     | run_pipeline | ║  MSc Data Science Dissertation                       ║
+2026-03-05 06:45:54 | INFO     | run_pipeline | ╚══════════════════════════════════════════════════════╝
+
+2026-03-05 06:45:54 | INFO     | run_pipeline | Running stages: [2]
+
+2026-03-05 06:45:54 | INFO     | run_pipeline | 
+##############################################################
+#  STAGE 2: Exploratory Data Analysis
+##############################################################
+2026-03-05 06:45:54 | INFO     | src.utils.seed | All random seeds fixed to 42.
+2026-03-05 06:45:54 | INFO     | src.eda.run_eda | 
+╔══════════════════════════════════════════════════════╗
+2026-03-05 06:45:54 | INFO     | src.eda.run_eda | ║  STAGE 2 — EXPLORATORY DATA ANALYSIS                  ║
+2026-03-05 06:45:54 | INFO     | src.eda.run_eda | ║  Exoplanet Candidate Vetting — NASA Kepler KOI         ║
+2026-03-05 06:45:54 | INFO     | src.eda.run_eda | ╚══════════════════════════════════════════════════════╝
+2026-03-05 06:45:54 | INFO     | src.eda.run_eda | Loading raw data from koi_data.csv …
+2026-03-05 06:45:54 | INFO     | src.eda.run_eda |   Raw shape: (3901, 141)
+2026-03-05 06:45:54 | INFO     | src.eda.run_eda | Loading processed data from koi_processed.csv …
+2026-03-05 06:45:54 | INFO     | src.eda.run_eda |   Processed shape: (3901, 103)
+2026-03-05 06:45:54 | INFO     | src.eda.run_eda | 
+=======================================================
+2026-03-05 06:45:54 | INFO     | src.eda.run_eda | SECTION 1 — Dataset Overview
+2026-03-05 06:45:54 | INFO     | src.eda.run_eda | =======================================================
+2026-03-05 06:45:54 | INFO     | src.eda.run_eda | 
+Raw dataset   : 3,901 rows × 141 columns
+2026-03-05 06:45:54 | INFO     | src.eda.run_eda | Processed     : 3,901 rows × 103 columns
+2026-03-05 06:45:54 | INFO     | src.eda.run_eda | Columns dropped: 38
+2026-03-05 06:45:54 | INFO     | src.eda.run_eda | 
+Class distribution:
+2026-03-05 06:45:54 | INFO     | src.eda.run_eda |   CONFIRMED            : 2341  (60.0%)
+2026-03-05 06:45:54 | INFO     | src.eda.run_eda |   FALSE POSITIVE       : 1083  (27.8%)
+2026-03-05 06:45:54 | INFO     | src.eda.run_eda |   CANDIDATE            :  477  (12.2%)
+2026-03-05 06:45:54 | INFO     | src.eda.run_eda | 
+Imbalance ratio (max/min): 4.91×
+2026-03-05 06:45:55 | INFO     | src.eda.run_eda |   Saved → eda_01_class_distribution.png
+2026-03-05 06:45:55 | INFO     | src.eda.run_eda | 
+=======================================================
+2026-03-05 06:45:55 | INFO     | src.eda.run_eda | SECTION 2 — Missing Value Analysis
+2026-03-05 06:45:55 | INFO     | src.eda.run_eda | =======================================================
+2026-03-05 06:45:56 | INFO     | src.eda.run_eda |   Saved → eda_02a_missing_raw.png
+2026-03-05 06:45:56 | INFO     | src.eda.run_eda |   19 columns have >50% missing values in raw data → dropped
+2026-03-05 06:45:56 | INFO     | src.eda.run_eda |   Saved → eda_02b_missing_features.png
+2026-03-05 06:45:56 | INFO     | src.eda.run_eda |   27 of 37 model features have some missing values → median imputed
+2026-03-05 06:45:56 | INFO     | src.eda.run_eda | 
+=======================================================
+2026-03-05 06:45:56 | INFO     | src.eda.run_eda | SECTION 3 — Feature Distributions by Class
+2026-03-05 06:45:56 | INFO     | src.eda.run_eda | =======================================================
+2026-03-05 06:46:01 | INFO     | src.eda.run_eda |   Saved → eda_03a_transit_distributions.png
+2026-03-05 06:46:02 | INFO     | src.eda.run_eda |   Saved → eda_03b_stellar_distributions.png
+2026-03-05 06:46:04 | INFO     | src.eda.run_eda |   Saved → eda_03c_signal_distributions.png
+2026-03-05 06:46:04 | INFO     | src.eda.run_eda |   Statistical summary saved → eda_feature_stats_by_class.csv
+2026-03-05 06:46:04 | INFO     | src.eda.run_eda | 
+=======================================================
+2026-03-05 06:46:04 | INFO     | src.eda.run_eda | SECTION 4 — Correlation Structure
+2026-03-05 06:46:04 | INFO     | src.eda.run_eda | =======================================================
+2026-03-05 06:46:05 | INFO     | src.eda.run_eda |   Saved → eda_04a_correlation_heatmap.png
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |   Saved → eda_04b_high_correlation_pairs.png
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda | 
+  High-correlation pairs (|r| > 0.85):
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_period                ↔ koi_dor                    r = 1.000
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_kepmag                ↔ koi_rmag                   r = 0.999
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_imag                  ↔ koi_zmag                   r = 0.997
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_hmag                  ↔ koi_kmag                   r = 0.997
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_zmag                  ↔ koi_jmag                   r = 0.995
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_kepmag                ↔ koi_imag                   r = 0.993
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_jmag                  ↔ koi_hmag                   r = 0.992
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_rmag                  ↔ koi_imag                   r = 0.991
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_jmag                  ↔ koi_kmag                   r = 0.990
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_kepmag                ↔ koi_zmag                   r = 0.987
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_gmag                  ↔ koi_rmag                   r = 0.985
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_rmag                  ↔ koi_zmag                   r = 0.984
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_zmag                  ↔ koi_hmag                   r = 0.980
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_impact                ↔ koi_ror                    r = 0.978
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_kepmag                ↔ koi_gmag                   r = 0.976
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_zmag                  ↔ koi_kmag                   r = 0.974
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_period                ↔ koi_sma                    r = 0.973
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_sma                   ↔ koi_dor                    r = 0.973
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_imag                  ↔ koi_jmag                   r = 0.970
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_ror                   ↔ koi_prad                   r = 0.967
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_gmag                  ↔ koi_imag                   r = 0.956
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_kepmag                ↔ koi_jmag                   r = 0.951
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_imag                  ↔ koi_hmag                   r = 0.950
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_rmag                  ↔ koi_jmag                   r = 0.948
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_impact                ↔ koi_prad                   r = 0.947
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_gmag                  ↔ koi_zmag                   r = 0.944
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_imag                  ↔ koi_kmag                   r = 0.941
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_kepmag                ↔ koi_hmag                   r = 0.924
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_rmag                  ↔ koi_hmag                   r = 0.918
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_kepmag                ↔ koi_kmag                   r = 0.916
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_rmag                  ↔ koi_kmag                   r = 0.911
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_gmag                  ↔ koi_jmag                   r = 0.899
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda |     koi_gmag                  ↔ koi_hmag                   r = 0.855
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda | 
+=======================================================
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda | SECTION 5 — Astrophysical Relationships
+2026-03-05 06:46:06 | INFO     | src.eda.run_eda | =======================================================
+2026-03-05 06:46:07 | INFO     | src.eda.run_eda |   Saved → eda_05a_period_vs_depth.png
+2026-03-05 06:46:07 | INFO     | src.eda.run_eda |   Saved → eda_05b_planet_vs_stellar_radius.png
+2026-03-05 06:46:08 | INFO     | src.eda.run_eda |   Saved → eda_05c_duration_vs_snr.png
+2026-03-05 06:46:08 | INFO     | src.eda.run_eda |   Saved → eda_05d_fp_flag_cooccurrence.png
+2026-03-05 06:46:08 | INFO     | src.eda.run_eda | 
+  False Positive Flag Rates by Class:
+2026-03-05 06:46:08 | INFO     | src.eda.run_eda | 
+    CONFIRMED:
+2026-03-05 06:46:08 | INFO     | src.eda.run_eda |       koi_fpflag_nt            : 19.9%
+2026-03-05 06:46:08 | INFO     | src.eda.run_eda |       koi_fpflag_ss            : 0.6%
+2026-03-05 06:46:08 | INFO     | src.eda.run_eda |       koi_fpflag_co            : 0.0%
+2026-03-05 06:46:08 | INFO     | src.eda.run_eda |       koi_fpflag_ec            : 0.0%
+2026-03-05 06:46:08 | INFO     | src.eda.run_eda | 
+    FALSE POSITIVE:
+2026-03-05 06:46:08 | INFO     | src.eda.run_eda |       koi_fpflag_nt            : 14.0%
+2026-03-05 06:46:08 | INFO     | src.eda.run_eda |       koi_fpflag_ss            : 50.7%
+2026-03-05 06:46:08 | INFO     | src.eda.run_eda |       koi_fpflag_co            : 60.9%
+2026-03-05 06:46:08 | INFO     | src.eda.run_eda |       koi_fpflag_ec            : 33.1%
+2026-03-05 06:46:08 | INFO     | src.eda.run_eda | 
+    CANDIDATE:
+2026-03-05 06:46:08 | INFO     | src.eda.run_eda |       koi_fpflag_nt            : 0.0%
+2026-03-05 06:46:08 | INFO     | src.eda.run_eda |       koi_fpflag_ss            : 0.0%
+2026-03-05 06:46:08 | INFO     | src.eda.run_eda |       koi_fpflag_co            : 0.0%
+2026-03-05 06:46:08 | INFO     | src.eda.run_eda |       koi_fpflag_ec            : 0.0%
+2026-03-05 06:46:08 | INFO     | src.eda.run_eda | 
+=======================================================
+2026-03-05 06:46:08 | INFO     | src.eda.run_eda | SECTION 6 — Outlier & Range Analysis
+2026-03-05 06:46:08 | INFO     | src.eda.run_eda | =======================================================
+2026-03-05 06:46:08 | INFO     | src.eda.run_eda |   Feature range statistics saved → eda_feature_ranges.csv
+2026-03-05 06:46:09 | INFO     | src.eda.run_eda |   Saved → eda_06_outlier_analysis.png
+2026-03-05 06:46:09 | INFO     | src.eda.run_eda | 
+  Average outlier rate across all features: 1.25%
+2026-03-05 06:46:09 | INFO     | src.eda.run_eda | 
+=======================================================
+2026-03-05 06:46:09 | INFO     | src.eda.run_eda | SECTION 7 — Class Separability Preview
+2026-03-05 06:46:09 | INFO     | src.eda.run_eda | =======================================================
+2026-03-05 06:46:10 | INFO     | src.eda.run_eda |   Saved → eda_07a_anova_f_scores.png
+2026-03-05 06:46:11 | INFO     | src.eda.run_eda |   Saved → eda_07b_violin_top6_features.png
+2026-03-05 06:46:11 | INFO     | src.eda.run_eda | 
+  Top 10 class-discriminative features (ANOVA F-score):
+2026-03-05 06:46:11 | INFO     | src.eda.run_eda |     koi_fpflag_co                   F =   2196.7  ***
+2026-03-05 06:46:11 | INFO     | src.eda.run_eda |     koi_fpflag_ss                   F =   1356.5  ***
+2026-03-05 06:46:11 | INFO     | src.eda.run_eda |     koi_fpflag_ec                   F =    695.2  ***
+2026-03-05 06:46:11 | INFO     | src.eda.run_eda |     koi_incl                        F =    505.4  ***
+2026-03-05 06:46:11 | INFO     | src.eda.run_eda |     koi_teq                         F =    286.1  ***
+2026-03-05 06:46:11 | INFO     | src.eda.run_eda |     koi_num_transits                F =    278.8  ***
+2026-03-05 06:46:11 | INFO     | src.eda.run_eda |     koi_smet                        F =    160.5  ***
+2026-03-05 06:46:11 | INFO     | src.eda.run_eda |     koi_steff                       F =     91.2  ***
+2026-03-05 06:46:11 | INFO     | src.eda.run_eda |     koi_max_mult_ev                 F =     74.5  ***
+2026-03-05 06:46:11 | INFO     | src.eda.run_eda |     koi_max_sngle_ev                F =     72.6  ***
+2026-03-05 06:46:11 | INFO     | src.eda.run_eda | 
+=======================================================
+2026-03-05 06:46:11 | INFO     | src.eda.run_eda | SECTION 8 — KOI Score Distribution (Data Quality Check)
+2026-03-05 06:46:11 | INFO     | src.eda.run_eda | =======================================================
+2026-03-05 06:46:12 | INFO     | src.eda.run_eda |   Saved → eda_08_koi_score_distribution.png
+2026-03-05 06:46:12 | INFO     | src.eda.run_eda |   CONFIRMED             median score = 1.000  mean = 0.966
+2026-03-05 06:46:12 | INFO     | src.eda.run_eda |   FALSE POSITIVE        median score = 0.000  mean = 0.052
+2026-03-05 06:46:12 | INFO     | src.eda.run_eda |   CANDIDATE             median score = 0.992  mean = 0.849
+2026-03-05 06:46:12 | INFO     | src.eda.run_eda | 
+=======================================================
+2026-03-05 06:46:12 | INFO     | src.eda.run_eda | EDA COMPLETE
+2026-03-05 06:46:12 | INFO     | src.eda.run_eda |   Figures saved to : /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/results/figures
+2026-03-05 06:46:12 | INFO     | src.eda.run_eda |   Metrics saved to : /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/results/metrics
+2026-03-05 06:46:12 | INFO     | src.eda.run_eda | =======================================================
+2026-03-05 06:46:12 | INFO     | run_pipeline | Stage 2 completed in 17.6s
+2026-03-05 06:46:12 | INFO     | run_pipeline | 
+=======================================================
+PIPELINE DONE — 17.6s
+Figures: results/figures/
+Metrics: results/metrics/
+=======================================================
