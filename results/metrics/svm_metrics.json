@@ -1,0 +1,18 @@
+{
+  "model": "SVM",
+  "accuracy": 0.8191126279863481,
+  "precision_macro": 0.7329130785538732,
+  "precision_weighted": 0.842335431213535,
+  "recall_macro": 0.7512583985975717,
+  "recall_weighted": 0.8191126279863481,
+  "f1_macro": 0.7387748063420311,
+  "f1_weighted": 0.8289702920607538,
+  "cohen_kappa": 0.6813044169783538,
+  "mcc": 0.6838673094047945,
+  "f1_confirmed": 0.845360824742268,
+  "f1_false_positive": 0.9877300613496932,
+  "f1_candidate": 0.38323353293413176,
+  "roc_auc_macro": 0.8969746996443767,
+  "roc_auc_weighted": 0.9176506533987748,
+  "classification_report": "                precision    recall  f1-score   support\n\n     CONFIRMED       0.88      0.82      0.85       352\nFALSE POSITIVE       0.99      0.99      0.99       163\n     CANDIDATE       0.33      0.45      0.38        71\n\n      accuracy                           0.82       586\n     macro avg       0.73      0.75      0.74       586\n  weighted avg       0.84      0.82      0.83       586\n"
+}

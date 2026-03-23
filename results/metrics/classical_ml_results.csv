@@ -1,0 +1,4 @@
+model,accuracy,f1_macro,roc_auc_macro,cohen_kappa,f1_confirmed,f1_false_positive,f1_candidate
+Random Forest,0.8942,0.7784,0.9549,0.7963,0.9227,0.9787,0.434
+SVM,0.8191,0.7388,0.897,0.6813,0.8454,0.9877,0.3832
+Logistic Regression,0.8191,0.7633,0.9238,0.6917,0.8384,0.9908,0.4607

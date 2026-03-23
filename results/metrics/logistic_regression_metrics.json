@@ -1,0 +1,18 @@
+{
+  "model": "Logistic Regression",
+  "accuracy": 0.8191126279863481,
+  "precision_macro": 0.7550330301061295,
+  "precision_weighted": 0.8642460974836282,
+  "recall_macro": 0.7962327904029495,
+  "recall_weighted": 0.8191126279863481,
+  "f1_macro": 0.7633056164029219,
+  "f1_weighted": 0.8350330677810812,
+  "cohen_kappa": 0.691673864053767,
+  "mcc": 0.7009630313740818,
+  "f1_confirmed": 0.8384146341463414,
+  "f1_false_positive": 0.9907692307692307,
+  "f1_candidate": 0.4607329842931937,
+  "roc_auc_macro": 0.9238430726172621,
+  "roc_auc_weighted": 0.9366117366718038,
+  "classification_report": "                precision    recall  f1-score   support\n\n     CONFIRMED       0.90      0.78      0.84       352\nFALSE POSITIVE       0.99      0.99      0.99       163\n     CANDIDATE       0.37      0.62      0.46        71\n\n      accuracy                           0.82       586\n     macro avg       0.76      0.80      0.76       586\n  weighted avg       0.86      0.82      0.84       586\n"
+}
