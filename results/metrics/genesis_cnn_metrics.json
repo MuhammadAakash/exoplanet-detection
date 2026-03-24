@@ -1,0 +1,18 @@
+{
+  "model": "Genesis CNN",
+  "accuracy": 0.856655290102389,
+  "precision_macro": 0.7571028894378321,
+  "precision_weighted": 0.8493160696589099,
+  "recall_macro": 0.7425626098101903,
+  "recall_weighted": 0.856655290102389,
+  "f1_macro": 0.7489782470481202,
+  "f1_weighted": 0.8525215190710225,
+  "cohen_kappa": 0.7332104821007561,
+  "mcc": 0.7338967442605131,
+  "f1_confirmed": 0.8898186889818689,
+  "f1_false_positive": 0.978328173374613,
+  "f1_candidate": 0.3787878787878788,
+  "roc_auc_macro": 0.8787186115436714,
+  "roc_auc_weighted": 0.9031311149168572,
+  "classification_report": "                precision    recall  f1-score   support\n\n     CONFIRMED       0.87      0.91      0.89       352\nFALSE POSITIVE       0.99      0.97      0.98       163\n     CANDIDATE       0.41      0.35      0.38        71\n\n      accuracy                           0.86       586\n     macro avg       0.76      0.74      0.75       586\n  weighted avg       0.85      0.86      0.85       586\n"
+}

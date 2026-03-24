@@ -1302,3 +1302,522 @@ PIPELINE DONE — 46.4s
 Figures: results/figures/
 Metrics: results/metrics/
 =======================================================
+2026-03-24 11:32:03 | INFO     | src.utils.seed | All random seeds fixed to 42.
+2026-03-24 11:32:03 | INFO     | run_pipeline | 
+╔══════════════════════════════════════════════════════╗
+2026-03-24 11:32:03 | INFO     | run_pipeline | ║  EXOPLANET CANDIDATE VETTING — PIPELINE RUNNER      ║
+2026-03-24 11:32:03 | INFO     | run_pipeline | ║  MSc Data Science Dissertation                       ║
+2026-03-24 11:32:03 | INFO     | run_pipeline | ╚══════════════════════════════════════════════════════╝
+
+2026-03-24 11:32:03 | INFO     | run_pipeline | Running stages: [1, 2, 3, 4, 5, 6]
+
+2026-03-24 11:32:03 | INFO     | run_pipeline | 
+##############################################################
+#  STAGE 1: Data Preprocessing
+##############################################################
+2026-03-24 11:32:04 | INFO     | src.utils.seed | All random seeds fixed to 42.
+2026-03-24 11:32:04 | INFO     | src.data.preprocess | Loading raw data from: /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/data/raw/koi_data.csv
+2026-03-24 11:32:04 | INFO     | src.data.preprocess | Raw data loaded — shape: (3901, 141)
+2026-03-24 11:32:04 | INFO     | src.data.preprocess | Dropping 39 non-informative columns.
+2026-03-24 11:32:04 | INFO     | src.data.preprocess | Target distribution after encoding:
+label
+0    2341
+1    1083
+2     477
+Name: count, dtype: int64
+2026-03-24 11:32:04 | INFO     | src.data.preprocess | Feature matrix shape: (3901, 37)  |  Target shape: (3901,)
+2026-03-24 11:32:04 | INFO     | src.data.preprocess | Splitting data — train:70%  val:15%  test:15%
+2026-03-24 11:32:04 | INFO     | src.data.preprocess | Split sizes — train: 2730  val: 585  test: 586
+2026-03-24 11:32:04 | INFO     | src.data.preprocess | Imputing missing values with strategy='median'
+2026-03-24 11:32:04 | INFO     | src.data.preprocess | Imputation complete.
+2026-03-24 11:32:04 | INFO     | src.data.preprocess | Fitting StandardScaler on training data.
+2026-03-24 11:32:04 | INFO     | src.data.preprocess | Feature scaling complete.
+2026-03-24 11:32:04 | INFO     | src.data.preprocess | Splits saved to /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/data/processed
+2026-03-24 11:32:04 | INFO     | src.data.preprocess | Scaler saved → /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/results/models/scaler.pkl
+2026-03-24 11:32:04 | INFO     | src.data.preprocess | Imputer saved → /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/results/models/imputer.pkl
+2026-03-24 11:32:05 | INFO     | src.data.preprocess | Full processed dataframe → /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/data/processed/koi_processed.csv
+2026-03-24 11:32:05 | INFO     | src.data.preprocess | ============================================================
+2026-03-24 11:32:05 | INFO     | src.data.preprocess | Preprocessing pipeline complete.
+2026-03-24 11:32:05 | INFO     | src.data.preprocess |   Training samples  : 2730
+2026-03-24 11:32:05 | INFO     | src.data.preprocess |   Validation samples: 585
+2026-03-24 11:32:05 | INFO     | src.data.preprocess |   Test samples      : 586
+2026-03-24 11:32:05 | INFO     | src.data.preprocess |   Features          : 37
+2026-03-24 11:32:05 | INFO     | src.data.preprocess | ============================================================
+2026-03-24 11:32:05 | INFO     | run_pipeline | Stage 1 completed in 1.1s
+2026-03-24 11:32:05 | INFO     | run_pipeline | 
+##############################################################
+#  STAGE 2: Exploratory Data Analysis
+##############################################################
+2026-03-24 11:32:05 | INFO     | src.utils.seed | All random seeds fixed to 42.
+2026-03-24 11:32:05 | INFO     | src.eda.run_eda | 
+╔══════════════════════════════════════════════════════╗
+2026-03-24 11:32:05 | INFO     | src.eda.run_eda | ║  STAGE 2 — EXPLORATORY DATA ANALYSIS                  ║
+2026-03-24 11:32:05 | INFO     | src.eda.run_eda | ║  Exoplanet Candidate Vetting — NASA Kepler KOI         ║
+2026-03-24 11:32:05 | INFO     | src.eda.run_eda | ╚══════════════════════════════════════════════════════╝
+2026-03-24 11:32:05 | INFO     | src.eda.run_eda | Loading raw data from koi_data.csv …
+2026-03-24 11:32:05 | INFO     | src.eda.run_eda |   Raw shape: (3901, 141)
+2026-03-24 11:32:05 | INFO     | src.eda.run_eda | Loading processed data from koi_processed.csv …
+2026-03-24 11:32:05 | INFO     | src.eda.run_eda |   Processed shape: (3901, 103)
+2026-03-24 11:32:05 | INFO     | src.eda.run_eda | 
+=======================================================
+2026-03-24 11:32:05 | INFO     | src.eda.run_eda | SECTION 1 — Dataset Overview
+2026-03-24 11:32:05 | INFO     | src.eda.run_eda | =======================================================
+2026-03-24 11:32:05 | INFO     | src.eda.run_eda | 
+Raw dataset   : 3,901 rows × 141 columns
+2026-03-24 11:32:05 | INFO     | src.eda.run_eda | Processed     : 3,901 rows × 103 columns
+2026-03-24 11:32:05 | INFO     | src.eda.run_eda | Columns dropped: 38
+2026-03-24 11:32:05 | INFO     | src.eda.run_eda | 
+Class distribution:
+2026-03-24 11:32:05 | INFO     | src.eda.run_eda |   CONFIRMED            : 2341  (60.0%)
+2026-03-24 11:32:05 | INFO     | src.eda.run_eda |   FALSE POSITIVE       : 1083  (27.8%)
+2026-03-24 11:32:05 | INFO     | src.eda.run_eda |   CANDIDATE            :  477  (12.2%)
+2026-03-24 11:32:05 | INFO     | src.eda.run_eda | 
+Imbalance ratio (max/min): 4.91×
+2026-03-24 11:32:05 | INFO     | src.eda.run_eda |   Saved → eda_01_class_distribution.png
+2026-03-24 11:32:05 | INFO     | src.eda.run_eda | 
+=======================================================
+2026-03-24 11:32:05 | INFO     | src.eda.run_eda | SECTION 2 — Missing Value Analysis
+2026-03-24 11:32:05 | INFO     | src.eda.run_eda | =======================================================
+2026-03-24 11:32:06 | INFO     | src.eda.run_eda |   Saved → eda_02a_missing_raw.png
+2026-03-24 11:32:06 | INFO     | src.eda.run_eda |   19 columns have >50% missing values in raw data → dropped
+2026-03-24 11:32:07 | INFO     | src.eda.run_eda |   Saved → eda_02b_missing_features.png
+2026-03-24 11:32:07 | INFO     | src.eda.run_eda |   27 of 37 model features have some missing values → median imputed
+2026-03-24 11:32:07 | INFO     | src.eda.run_eda | 
+=======================================================
+2026-03-24 11:32:07 | INFO     | src.eda.run_eda | SECTION 3 — Feature Distributions by Class
+2026-03-24 11:32:07 | INFO     | src.eda.run_eda | =======================================================
+2026-03-24 11:32:11 | INFO     | src.eda.run_eda |   Saved → eda_03a_transit_distributions.png
+2026-03-24 11:32:13 | INFO     | src.eda.run_eda |   Saved → eda_03b_stellar_distributions.png
+2026-03-24 11:32:14 | INFO     | src.eda.run_eda |   Saved → eda_03c_signal_distributions.png
+2026-03-24 11:32:15 | INFO     | src.eda.run_eda |   Statistical summary saved → eda_feature_stats_by_class.csv
+2026-03-24 11:32:15 | INFO     | src.eda.run_eda | 
+=======================================================
+2026-03-24 11:32:15 | INFO     | src.eda.run_eda | SECTION 4 — Correlation Structure
+2026-03-24 11:32:15 | INFO     | src.eda.run_eda | =======================================================
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |   Saved → eda_04a_correlation_heatmap.png
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |   Saved → eda_04b_high_correlation_pairs.png
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda | 
+  High-correlation pairs (|r| > 0.85):
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_period                ↔ koi_dor                    r = 1.000
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_kepmag                ↔ koi_rmag                   r = 0.999
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_imag                  ↔ koi_zmag                   r = 0.997
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_hmag                  ↔ koi_kmag                   r = 0.997
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_zmag                  ↔ koi_jmag                   r = 0.995
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_kepmag                ↔ koi_imag                   r = 0.993
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_jmag                  ↔ koi_hmag                   r = 0.992
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_rmag                  ↔ koi_imag                   r = 0.991
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_jmag                  ↔ koi_kmag                   r = 0.990
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_kepmag                ↔ koi_zmag                   r = 0.987
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_gmag                  ↔ koi_rmag                   r = 0.985
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_rmag                  ↔ koi_zmag                   r = 0.984
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_zmag                  ↔ koi_hmag                   r = 0.980
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_impact                ↔ koi_ror                    r = 0.978
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_kepmag                ↔ koi_gmag                   r = 0.976
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_zmag                  ↔ koi_kmag                   r = 0.974
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_period                ↔ koi_sma                    r = 0.973
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_sma                   ↔ koi_dor                    r = 0.973
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_imag                  ↔ koi_jmag                   r = 0.970
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_ror                   ↔ koi_prad                   r = 0.967
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_gmag                  ↔ koi_imag                   r = 0.956
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_kepmag                ↔ koi_jmag                   r = 0.951
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_imag                  ↔ koi_hmag                   r = 0.950
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_rmag                  ↔ koi_jmag                   r = 0.948
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_impact                ↔ koi_prad                   r = 0.947
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_gmag                  ↔ koi_zmag                   r = 0.944
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_imag                  ↔ koi_kmag                   r = 0.941
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_kepmag                ↔ koi_hmag                   r = 0.924
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_rmag                  ↔ koi_hmag                   r = 0.918
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_kepmag                ↔ koi_kmag                   r = 0.916
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_rmag                  ↔ koi_kmag                   r = 0.911
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_gmag                  ↔ koi_jmag                   r = 0.899
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda |     koi_gmag                  ↔ koi_hmag                   r = 0.855
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda | 
+=======================================================
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda | SECTION 5 — Astrophysical Relationships
+2026-03-24 11:32:16 | INFO     | src.eda.run_eda | =======================================================
+2026-03-24 11:32:17 | INFO     | src.eda.run_eda |   Saved → eda_05a_period_vs_depth.png
+2026-03-24 11:32:17 | INFO     | src.eda.run_eda |   Saved → eda_05b_planet_vs_stellar_radius.png
+2026-03-24 11:32:18 | INFO     | src.eda.run_eda |   Saved → eda_05c_duration_vs_snr.png
+2026-03-24 11:32:18 | INFO     | src.eda.run_eda |   Saved → eda_05d_fp_flag_cooccurrence.png
+2026-03-24 11:32:18 | INFO     | src.eda.run_eda | 
+  False Positive Flag Rates by Class:
+2026-03-24 11:32:18 | INFO     | src.eda.run_eda | 
+    CONFIRMED:
+2026-03-24 11:32:18 | INFO     | src.eda.run_eda |       koi_fpflag_nt            : 19.9%
+2026-03-24 11:32:18 | INFO     | src.eda.run_eda |       koi_fpflag_ss            : 0.6%
+2026-03-24 11:32:18 | INFO     | src.eda.run_eda |       koi_fpflag_co            : 0.0%
+2026-03-24 11:32:18 | INFO     | src.eda.run_eda |       koi_fpflag_ec            : 0.0%
+2026-03-24 11:32:18 | INFO     | src.eda.run_eda | 
+    FALSE POSITIVE:
+2026-03-24 11:32:18 | INFO     | src.eda.run_eda |       koi_fpflag_nt            : 14.0%
+2026-03-24 11:32:18 | INFO     | src.eda.run_eda |       koi_fpflag_ss            : 50.7%
+2026-03-24 11:32:18 | INFO     | src.eda.run_eda |       koi_fpflag_co            : 60.9%
+2026-03-24 11:32:18 | INFO     | src.eda.run_eda |       koi_fpflag_ec            : 33.1%
+2026-03-24 11:32:18 | INFO     | src.eda.run_eda | 
+    CANDIDATE:
+2026-03-24 11:32:18 | INFO     | src.eda.run_eda |       koi_fpflag_nt            : 0.0%
+2026-03-24 11:32:18 | INFO     | src.eda.run_eda |       koi_fpflag_ss            : 0.0%
+2026-03-24 11:32:18 | INFO     | src.eda.run_eda |       koi_fpflag_co            : 0.0%
+2026-03-24 11:32:18 | INFO     | src.eda.run_eda |       koi_fpflag_ec            : 0.0%
+2026-03-24 11:32:18 | INFO     | src.eda.run_eda | 
+=======================================================
+2026-03-24 11:32:18 | INFO     | src.eda.run_eda | SECTION 6 — Outlier & Range Analysis
+2026-03-24 11:32:18 | INFO     | src.eda.run_eda | =======================================================
+2026-03-24 11:32:18 | INFO     | src.eda.run_eda |   Feature range statistics saved → eda_feature_ranges.csv
+2026-03-24 11:32:19 | INFO     | src.eda.run_eda |   Saved → eda_06_outlier_analysis.png
+2026-03-24 11:32:19 | INFO     | src.eda.run_eda | 
+  Average outlier rate across all features: 1.25%
+2026-03-24 11:32:19 | INFO     | src.eda.run_eda | 
+=======================================================
+2026-03-24 11:32:19 | INFO     | src.eda.run_eda | SECTION 7 — Class Separability Preview
+2026-03-24 11:32:19 | INFO     | src.eda.run_eda | =======================================================
+2026-03-24 11:32:20 | INFO     | src.eda.run_eda |   Saved → eda_07a_anova_f_scores.png
+2026-03-24 11:32:21 | INFO     | src.eda.run_eda |   Saved → eda_07b_violin_top6_features.png
+2026-03-24 11:32:21 | INFO     | src.eda.run_eda | 
+  Top 10 class-discriminative features (ANOVA F-score):
+2026-03-24 11:32:21 | INFO     | src.eda.run_eda |     koi_fpflag_co                   F =   2196.7  ***
+2026-03-24 11:32:21 | INFO     | src.eda.run_eda |     koi_fpflag_ss                   F =   1356.5  ***
+2026-03-24 11:32:21 | INFO     | src.eda.run_eda |     koi_fpflag_ec                   F =    695.2  ***
+2026-03-24 11:32:21 | INFO     | src.eda.run_eda |     koi_incl                        F =    505.4  ***
+2026-03-24 11:32:21 | INFO     | src.eda.run_eda |     koi_teq                         F =    286.1  ***
+2026-03-24 11:32:21 | INFO     | src.eda.run_eda |     koi_num_transits                F =    278.8  ***
+2026-03-24 11:32:21 | INFO     | src.eda.run_eda |     koi_smet                        F =    160.5  ***
+2026-03-24 11:32:21 | INFO     | src.eda.run_eda |     koi_steff                       F =     91.2  ***
+2026-03-24 11:32:21 | INFO     | src.eda.run_eda |     koi_max_mult_ev                 F =     74.5  ***
+2026-03-24 11:32:21 | INFO     | src.eda.run_eda |     koi_max_sngle_ev                F =     72.6  ***
+2026-03-24 11:32:21 | INFO     | src.eda.run_eda | 
+=======================================================
+2026-03-24 11:32:21 | INFO     | src.eda.run_eda | SECTION 8 — KOI Score Distribution (Data Quality Check)
+2026-03-24 11:32:21 | INFO     | src.eda.run_eda | =======================================================
+2026-03-24 11:32:21 | INFO     | src.eda.run_eda |   Saved → eda_08_koi_score_distribution.png
+2026-03-24 11:32:21 | INFO     | src.eda.run_eda |   CONFIRMED             median score = 1.000  mean = 0.966
+2026-03-24 11:32:21 | INFO     | src.eda.run_eda |   FALSE POSITIVE        median score = 0.000  mean = 0.052
+2026-03-24 11:32:21 | INFO     | src.eda.run_eda |   CANDIDATE             median score = 0.992  mean = 0.849
+2026-03-24 11:32:21 | INFO     | src.eda.run_eda | 
+=======================================================
+2026-03-24 11:32:21 | INFO     | src.eda.run_eda | EDA COMPLETE
+2026-03-24 11:32:21 | INFO     | src.eda.run_eda |   Figures saved to : /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/results/figures
+2026-03-24 11:32:21 | INFO     | src.eda.run_eda |   Metrics saved to : /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/results/metrics
+2026-03-24 11:32:21 | INFO     | src.eda.run_eda | =======================================================
+2026-03-24 11:32:21 | INFO     | run_pipeline | Stage 2 completed in 16.9s
+2026-03-24 11:32:21 | INFO     | run_pipeline | 
+##############################################################
+#  STAGE 3: Classical ML Models
+##############################################################
+2026-03-24 11:32:22 | INFO     | src.utils.seed | All random seeds fixed to 42.
+2026-03-24 11:32:22 | INFO     | src.models.classical_ml | Loading preprocessed splits …
+2026-03-24 11:32:22 | INFO     | src.models.classical_ml |   Train+Val : 3315 samples
+2026-03-24 11:32:22 | INFO     | src.models.classical_ml |   Test      : 586 samples
+2026-03-24 11:32:22 | INFO     | src.models.classical_ml |   Features  : 37
+2026-03-24 11:32:22 | INFO     | src.models.classical_ml | 
+──────────────────────────────────────────────────
+Training: Random Forest
+──────────────────────────────────────────────────
+2026-03-24 11:32:24 | INFO     | src.evaluation.metrics | Evaluating: Random Forest
+2026-03-24 11:32:24 | INFO     | src.evaluation.metrics |   Accuracy   : 0.8942
+2026-03-24 11:32:24 | INFO     | src.evaluation.metrics |   F1 (macro) : 0.7784
+2026-03-24 11:32:24 | INFO     | src.evaluation.metrics |   ROC-AUC    : 0.9549
+2026-03-24 11:32:24 | INFO     | src.evaluation.metrics |   Kappa      : 0.7963
+2026-03-24 11:32:24 | INFO     | src.evaluation.metrics | 
+                precision    recall  f1-score   support
+
+     CONFIRMED       0.88      0.97      0.92       352
+FALSE POSITIVE       0.97      0.99      0.98       163
+     CANDIDATE       0.66      0.32      0.43        71
+
+      accuracy                           0.89       586
+     macro avg       0.84      0.76      0.78       586
+  weighted avg       0.88      0.89      0.88       586
+
+2026-03-24 11:32:24 | INFO     | src.evaluation.metrics | Metrics saved → /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/results/metrics/random_forest_metrics.json
+2026-03-24 11:32:24 | INFO     | src.evaluation.metrics | Master metrics CSV updated → /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/results/metrics/all_models_metrics.csv
+2026-03-24 11:32:24 | INFO     | src.models.classical_ml | Model saved → random_forest.pkl
+2026-03-24 11:32:24 | INFO     | src.models.classical_ml | 
+──────────────────────────────────────────────────
+Training: SVM
+──────────────────────────────────────────────────
+2026-03-24 11:32:27 | INFO     | src.evaluation.metrics | Evaluating: SVM
+2026-03-24 11:32:27 | INFO     | src.evaluation.metrics |   Accuracy   : 0.8191
+2026-03-24 11:32:27 | INFO     | src.evaluation.metrics |   F1 (macro) : 0.7388
+2026-03-24 11:32:27 | INFO     | src.evaluation.metrics |   ROC-AUC    : 0.8970
+2026-03-24 11:32:27 | INFO     | src.evaluation.metrics |   Kappa      : 0.6813
+2026-03-24 11:32:27 | INFO     | src.evaluation.metrics | 
+                precision    recall  f1-score   support
+
+     CONFIRMED       0.88      0.82      0.85       352
+FALSE POSITIVE       0.99      0.99      0.99       163
+     CANDIDATE       0.33      0.45      0.38        71
+
+      accuracy                           0.82       586
+     macro avg       0.73      0.75      0.74       586
+  weighted avg       0.84      0.82      0.83       586
+
+2026-03-24 11:32:27 | INFO     | src.evaluation.metrics | Metrics saved → /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/results/metrics/svm_metrics.json
+2026-03-24 11:32:27 | INFO     | src.evaluation.metrics | Master metrics CSV updated → /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/results/metrics/all_models_metrics.csv
+2026-03-24 11:32:27 | INFO     | src.models.classical_ml | Model saved → svm.pkl
+2026-03-24 11:32:27 | INFO     | src.models.classical_ml | 
+──────────────────────────────────────────────────
+Training: Logistic Regression
+──────────────────────────────────────────────────
+2026-03-24 11:32:27 | INFO     | src.evaluation.metrics | Evaluating: Logistic Regression
+2026-03-24 11:32:27 | INFO     | src.evaluation.metrics |   Accuracy   : 0.8191
+2026-03-24 11:32:27 | INFO     | src.evaluation.metrics |   F1 (macro) : 0.7633
+2026-03-24 11:32:27 | INFO     | src.evaluation.metrics |   ROC-AUC    : 0.9238
+2026-03-24 11:32:27 | INFO     | src.evaluation.metrics |   Kappa      : 0.6917
+2026-03-24 11:32:27 | INFO     | src.evaluation.metrics | 
+                precision    recall  f1-score   support
+
+     CONFIRMED       0.90      0.78      0.84       352
+FALSE POSITIVE       0.99      0.99      0.99       163
+     CANDIDATE       0.37      0.62      0.46        71
+
+      accuracy                           0.82       586
+     macro avg       0.76      0.80      0.76       586
+  weighted avg       0.86      0.82      0.84       586
+
+2026-03-24 11:32:27 | INFO     | src.evaluation.metrics | Metrics saved → /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/results/metrics/logistic_regression_metrics.json
+2026-03-24 11:32:27 | INFO     | src.evaluation.metrics | Master metrics CSV updated → /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/results/metrics/all_models_metrics.csv
+2026-03-24 11:32:27 | INFO     | src.models.classical_ml | Model saved → logistic_regression.pkl
+2026-03-24 11:32:27 | INFO     | src.models.classical_ml | 
+Generating figures …
+2026-03-24 11:32:28 | INFO     | src.models.classical_ml | Saved → ml_01_confusion_matrices.png
+2026-03-24 11:32:28 | INFO     | src.models.classical_ml | Saved → ml_02_per_class_f1.png
+2026-03-24 11:32:29 | INFO     | src.models.classical_ml | Saved → ml_03_roc_curves.png
+2026-03-24 11:32:29 | INFO     | src.models.classical_ml | Saved → ml_04_rf_feature_importance.png
+2026-03-24 11:32:30 | INFO     | src.models.classical_ml | Saved → ml_05_model_comparison.png
+2026-03-24 11:32:30 | INFO     | src.models.classical_ml | Summary saved → classical_ml_results.csv
+2026-03-24 11:32:30 | INFO     | src.models.classical_ml | 
+============================================================
+2026-03-24 11:32:30 | INFO     | src.models.classical_ml | STAGE 3 — CLASSICAL ML RESULTS
+2026-03-24 11:32:30 | INFO     | src.models.classical_ml | ============================================================
+2026-03-24 11:32:30 | INFO     | src.models.classical_ml | 
+              model  accuracy  f1_macro  roc_auc_macro  cohen_kappa
+      Random Forest    0.8942    0.7784         0.9549       0.7963
+                SVM    0.8191    0.7388         0.8970       0.6813
+Logistic Regression    0.8191    0.7633         0.9238       0.6917
+2026-03-24 11:32:30 | INFO     | src.models.classical_ml | 
+  Best model (F1 Macro): Random Forest (F1=0.7784, AUC=0.9549)
+2026-03-24 11:32:30 | INFO     | src.models.classical_ml | ============================================================
+2026-03-24 11:32:30 | INFO     | run_pipeline | Stage 3 completed in 8.2s
+2026-03-24 11:32:30 | INFO     | run_pipeline | 
+##############################################################
+#  STAGE 4: Baseline CNN
+##############################################################
+2026-03-24 11:32:30 | INFO     | src.utils.seed | All random seeds fixed to 42.
+2026-03-24 11:32:30 | INFO     | src.models.baseline_cnn | Loading preprocessed splits …
+2026-03-24 11:32:30 | INFO     | src.models.baseline_cnn |   Train      : 2730 samples
+2026-03-24 11:32:30 | INFO     | src.models.baseline_cnn |   Validation : 585 samples
+2026-03-24 11:32:30 | INFO     | src.models.baseline_cnn |   Test       : 586 samples
+2026-03-24 11:32:30 | INFO     | src.models.baseline_cnn |   Features   : 37
+2026-03-24 11:32:30 | INFO     | src.models.baseline_cnn | 
+Building Baseline CNN …
+2026-03-24 11:32:30 | INFO     | src.models.baseline_cnn | Model: "baseline_cnn"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ tabular_input (InputLayer)           │ (None, 37, 1)               │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ conv_1 (Conv1D)                      │ (None, 37, 32)              │              96 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ bn_1 (BatchNormalization)            │ (None, 37, 32)              │             128 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ relu_1 (Activation)                  │ (None, 37, 32)              │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ conv_2 (Conv1D)                      │ (None, 37, 64)              │           6,144 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ bn_2 (BatchNormalization)            │ (None, 37, 64)              │             256 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ relu_2 (Activation)                  │ (None, 37, 64)              │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ conv_3 (Conv1D)                      │ (None, 37, 128)             │          24,576 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ bn_3 (BatchNormalization)            │ (None, 37, 128)             │             512 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ relu_3 (Activation)                  │ (None, 37, 128)             │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ gap (GlobalAveragePooling1D)         │ (None, 128)                 │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_1 (Dense)                      │ (None, 64)                  │           8,256 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout_1 (Dropout)                  │ (None, 64)                  │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ output (Dense)                       │ (None, 3)                   │             195 │
+└──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
+ Total params: 40,163 (156.89 KB)
+ Trainable params: 39,715 (155.14 KB)
+ Non-trainable params: 448 (1.75 KB)
+
+2026-03-24 11:32:30 | INFO     | src.models.baseline_cnn | Total parameters: 40,163
+2026-03-24 11:32:30 | INFO     | src.models.baseline_cnn | Class weights: {0: np.float64(0.556), 1: np.float64(1.201), 2: np.float64(2.725)}
+2026-03-24 11:32:30 | INFO     | src.models.baseline_cnn | 
+Training for up to 60 epochs (early stopping patience=10) …
+2026-03-24 11:33:30 | INFO     | src.models.baseline_cnn | 
+Training complete.  Best epoch: 26  (val_loss = 0.4982)
+2026-03-24 11:33:30 | INFO     | src.models.baseline_cnn | Model saved → baseline_cnn.keras
+2026-03-24 11:33:30 | INFO     | src.models.baseline_cnn | 
+Evaluating on held-out test set …
+2026-03-24 11:33:31 | INFO     | src.evaluation.metrics | Evaluating: Baseline CNN
+2026-03-24 11:33:31 | INFO     | src.evaluation.metrics |   Accuracy   : 0.8072
+2026-03-24 11:33:31 | INFO     | src.evaluation.metrics |   F1 (macro) : 0.7378
+2026-03-24 11:33:31 | INFO     | src.evaluation.metrics |   ROC-AUC    : 0.9077
+2026-03-24 11:33:31 | INFO     | src.evaluation.metrics |   Kappa      : 0.6660
+2026-03-24 11:33:31 | INFO     | src.evaluation.metrics | 
+                precision    recall  f1-score   support
+
+     CONFIRMED       0.89      0.80      0.84       352
+FALSE POSITIVE       1.00      0.94      0.97       163
+     CANDIDATE       0.32      0.52      0.40        71
+
+      accuracy                           0.81       586
+     macro avg       0.74      0.76      0.74       586
+  weighted avg       0.85      0.81      0.82       586
+
+2026-03-24 11:33:31 | INFO     | src.evaluation.metrics | Metrics saved → /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/results/metrics/baseline_cnn_metrics.json
+2026-03-24 11:33:31 | INFO     | src.evaluation.metrics | Master metrics CSV updated → /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/results/metrics/all_models_metrics.csv
+2026-03-24 11:33:31 | INFO     | src.models.baseline_cnn | 
+Generating figures …
+2026-03-24 11:33:31 | INFO     | src.models.baseline_cnn | Saved → cnn4_baseline_training_history.png
+2026-03-24 11:33:32 | INFO     | src.models.baseline_cnn | Saved → cnn4_baseline_confusion_matrix.png
+2026-03-24 11:33:32 | INFO     | src.models.baseline_cnn | Saved → cnn4_baseline_roc_curves.png
+2026-03-24 11:33:32 | INFO     | src.models.baseline_cnn | Saved → cnn4_baseline_architecture.png
+2026-03-24 11:33:32 | INFO     | src.models.baseline_cnn | Summary CSV saved → baseline_cnn_results.csv
+2026-03-24 11:33:32 | INFO     | src.models.baseline_cnn | 
+=======================================================
+2026-03-24 11:33:32 | INFO     | src.models.baseline_cnn | STAGE 4 — BASELINE CNN RESULTS
+2026-03-24 11:33:32 | INFO     | src.models.baseline_cnn | =======================================================
+2026-03-24 11:33:32 | INFO     | src.models.baseline_cnn |   Accuracy   : 0.8072
+2026-03-24 11:33:32 | INFO     | src.models.baseline_cnn |   F1 Macro   : 0.7378
+2026-03-24 11:33:32 | INFO     | src.models.baseline_cnn |   ROC-AUC    : 0.9077
+2026-03-24 11:33:32 | INFO     | src.models.baseline_cnn |   Cohen's κ  : 0.6660
+2026-03-24 11:33:32 | INFO     | src.models.baseline_cnn |   Best epoch : 26 / 36
+2026-03-24 11:33:32 | INFO     | src.models.baseline_cnn |   Parameters : 40,163
+2026-03-24 11:33:32 | INFO     | src.models.baseline_cnn | =======================================================
+2026-03-24 11:33:32 | INFO     | run_pipeline | Stage 4 completed in 62.5s
+2026-03-24 11:33:32 | INFO     | run_pipeline | 
+##############################################################
+#  STAGE 5: Genesis CNN (Tabular)
+##############################################################
+2026-03-24 11:33:32 | INFO     | src.utils.seed | All random seeds fixed to 42.
+2026-03-24 11:33:32 | INFO     | src.models.genesis_cnn | Loading preprocessed splits …
+2026-03-24 11:33:32 | INFO     | src.models.genesis_cnn |   Train      : 2730 samples
+2026-03-24 11:33:32 | INFO     | src.models.genesis_cnn |   Validation : 585 samples
+2026-03-24 11:33:32 | INFO     | src.models.genesis_cnn |   Test       : 586 samples
+2026-03-24 11:33:32 | INFO     | src.models.genesis_cnn |   Features   : 37
+2026-03-24 11:33:32 | INFO     | src.models.genesis_cnn | 
+Building Genesis CNN (dual-branch) …
+2026-03-24 11:33:32 | INFO     | src.models.genesis_cnn | Model: "genesis_cnn"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Layer (type)                  ┃ Output Shape              ┃         Param # ┃ Connected to               ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ tabular_input (InputLayer)    │ (None, 37, 1)             │               0 │ -                          │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ local_b1_conv (Conv1D)        │ (None, 37, 32)            │              96 │ tabular_input[0][0]        │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ global_b1_conv (Conv1D)       │ (None, 37, 32)            │             224 │ tabular_input[0][0]        │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ local_b1_bn                   │ (None, 37, 32)            │             128 │ local_b1_conv[0][0]        │
+│ (BatchNormalization)          │                           │                 │                            │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ global_b1_bn                  │ (None, 37, 32)            │             128 │ global_b1_conv[0][0]       │
+│ (BatchNormalization)          │                           │                 │                            │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ local_b1_relu (Activation)    │ (None, 37, 32)            │               0 │ local_b1_bn[0][0]          │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ global_b1_relu (Activation)   │ (None, 37, 32)            │               0 │ global_b1_bn[0][0]         │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ local_b2_conv (Conv1D)        │ (None, 37, 64)            │           6,144 │ local_b1_relu[0][0]        │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ global_b2_conv (Conv1D)       │ (None, 37, 64)            │          10,240 │ global_b1_relu[0][0]       │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ local_b2_bn                   │ (None, 37, 64)            │             256 │ local_b2_conv[0][0]        │
+│ (BatchNormalization)          │                           │                 │                            │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ global_b2_bn                  │ (None, 37, 64)            │             256 │ global_b2_conv[0][0]       │
+│ (BatchNormalization)          │                           │                 │                            │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ local_b2_relu (Activation)    │ (None, 37, 64)            │               0 │ local_b2_bn[0][0]          │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ global_b2_relu (Activation)   │ (None, 37, 64)            │               0 │ global_b2_bn[0][0]         │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ local_gap                     │ (None, 64)                │               0 │ local_b2_relu[0][0]        │
+│ (GlobalAveragePooling1D)      │                           │                 │                            │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ global_gap                    │ (None, 64)                │               0 │ global_b2_relu[0][0]       │
+│ (GlobalAveragePooling1D)      │                           │                 │                            │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ merge (Concatenate)           │ (None, 128)               │               0 │ local_gap[0][0],           │
+│                               │                           │                 │ global_gap[0][0]           │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ dense_1 (Dense)               │ (None, 128)               │          16,512 │ merge[0][0]                │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ dropout_1 (Dropout)           │ (None, 128)               │               0 │ dense_1[0][0]              │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ dense_2 (Dense)               │ (None, 64)                │           8,256 │ dropout_1[0][0]            │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ dropout_2 (Dropout)           │ (None, 64)                │               0 │ dense_2[0][0]              │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ output (Dense)                │ (None, 3)                 │             195 │ dropout_2[0][0]            │
+└───────────────────────────────┴───────────────────────────┴─────────────────┴────────────────────────────┘
+ Total params: 42,435 (165.76 KB)
+ Trainable params: 42,051 (164.26 KB)
+ Non-trainable params: 384 (1.50 KB)
+
+2026-03-24 11:33:32 | INFO     | src.models.genesis_cnn | Total parameters: 42,435
+2026-03-24 11:33:32 | INFO     | src.models.genesis_cnn | Class weights: {0: np.float64(0.556), 1: np.float64(1.201), 2: np.float64(2.725)}
+2026-03-24 11:33:32 | INFO     | src.models.genesis_cnn | 
+Training for up to 60 epochs (early stopping patience=10) …
+2026-03-24 11:34:49 | INFO     | src.models.genesis_cnn | 
+Training complete.  Best epoch: 44  (val_loss = 0.4847)
+2026-03-24 11:34:49 | INFO     | src.models.genesis_cnn | Model saved → genesis_cnn.keras
+2026-03-24 11:34:49 | INFO     | src.models.genesis_cnn | 
+Evaluating on held-out test set …
+2026-03-24 11:34:49 | INFO     | src.evaluation.metrics | Evaluating: Genesis CNN
+2026-03-24 11:34:49 | INFO     | src.evaluation.metrics |   Accuracy   : 0.8567
+2026-03-24 11:34:49 | INFO     | src.evaluation.metrics |   F1 (macro) : 0.7490
+2026-03-24 11:34:49 | INFO     | src.evaluation.metrics |   ROC-AUC    : 0.8787
+2026-03-24 11:34:49 | INFO     | src.evaluation.metrics |   Kappa      : 0.7332
+2026-03-24 11:34:49 | INFO     | src.evaluation.metrics | 
+                precision    recall  f1-score   support
+
+     CONFIRMED       0.87      0.91      0.89       352
+FALSE POSITIVE       0.99      0.97      0.98       163
+     CANDIDATE       0.41      0.35      0.38        71
+
+      accuracy                           0.86       586
+     macro avg       0.76      0.74      0.75       586
+  weighted avg       0.85      0.86      0.85       586
+
+2026-03-24 11:34:49 | INFO     | src.evaluation.metrics | Metrics saved → /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/results/metrics/genesis_cnn_metrics.json
+2026-03-24 11:34:49 | INFO     | src.evaluation.metrics | Master metrics CSV updated → /home/mohammad-aakash/Data_Science_Project/exoplanet-detection/results/metrics/all_models_metrics.csv
+2026-03-24 11:34:49 | INFO     | src.models.genesis_cnn | 
+Generating figures …
+2026-03-24 11:34:50 | INFO     | src.models.genesis_cnn | Saved → cnn5_genesis_training_history.png
+2026-03-24 11:34:50 | INFO     | src.models.genesis_cnn | Saved → cnn5_genesis_confusion_matrix.png
+2026-03-24 11:34:50 | INFO     | src.models.genesis_cnn | Saved → cnn5_genesis_roc_curves.png
+2026-03-24 11:34:51 | INFO     | src.models.genesis_cnn | Saved → cnn5_genesis_architecture.png
+2026-03-24 11:34:51 | INFO     | src.models.genesis_cnn | Saved → cnn5_genesis_branch_comparison.png
+2026-03-24 11:34:51 | INFO     | src.models.genesis_cnn | Summary CSV saved → genesis_cnn_results.csv
+2026-03-24 11:34:51 | INFO     | src.models.genesis_cnn | 
+=======================================================
+2026-03-24 11:34:51 | INFO     | src.models.genesis_cnn | STAGE 5 — GENESIS CNN RESULTS
+2026-03-24 11:34:51 | INFO     | src.models.genesis_cnn | =======================================================
+2026-03-24 11:34:51 | INFO     | src.models.genesis_cnn |   Accuracy   : 0.8567
+2026-03-24 11:34:51 | INFO     | src.models.genesis_cnn |   F1 Macro   : 0.7490
+2026-03-24 11:34:51 | INFO     | src.models.genesis_cnn |   ROC-AUC    : 0.8787
+2026-03-24 11:34:51 | INFO     | src.models.genesis_cnn |   Cohen's κ  : 0.7332
+2026-03-24 11:34:51 | INFO     | src.models.genesis_cnn |   Best epoch : 44 / 54
+2026-03-24 11:34:51 | INFO     | src.models.genesis_cnn |   Parameters : 42,435
+2026-03-24 11:34:51 | INFO     | src.models.genesis_cnn | =======================================================
+2026-03-24 11:34:51 | INFO     | run_pipeline | Stage 5 completed in 78.7s
+2026-03-24 11:34:51 | INFO     | run_pipeline | 
+##############################################################
+#  STAGE 6: Model Comparison
+##############################################################
+2026-03-24 11:34:51 | WARNING  | run_pipeline | compare.py not yet implemented — skipping Stage 6.
+2026-03-24 11:34:51 | INFO     | run_pipeline | Stage 6 completed in 0.0s
+2026-03-24 11:34:51 | INFO     | run_pipeline | 
+=======================================================
+PIPELINE DONE — 167.4s
+Figures: results/figures/
+Metrics: results/metrics/
+=======================================================

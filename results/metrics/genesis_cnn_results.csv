@@ -1,0 +1,2 @@
+model,accuracy,f1_macro,roc_auc_macro,cohen_kappa,f1_confirmed,f1_false_positive,f1_candidate,best_epoch,n_params
+Genesis CNN,0.8567,0.749,0.8787,0.7332,0.8898,0.9783,0.3788,44,42435
