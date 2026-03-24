@@ -1,0 +1,2 @@
+model,accuracy,f1_macro,roc_auc_macro,cohen_kappa,f1_confirmed,f1_false_positive,f1_candidate,best_epoch,n_params
+Baseline CNN,0.8072,0.7378,0.9077,0.666,0.8418,0.9716,0.4,26,40163

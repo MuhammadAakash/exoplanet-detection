@@ -1,0 +1,18 @@
+{
+  "model": "Baseline CNN",
+  "accuracy": 0.8071672354948806,
+  "precision_macro": 0.7371179521129868,
+  "precision_weighted": 0.850161779940869,
+  "recall_macro": 0.7556828000911212,
+  "recall_weighted": 0.8071672354948806,
+  "f1_macro": 0.7377999591945635,
+  "f1_weighted": 0.8243731868751333,
+  "cohen_kappa": 0.666010975265303,
+  "mcc": 0.6719134862600203,
+  "f1_confirmed": 0.8417910447761194,
+  "f1_false_positive": 0.9716088328075709,
+  "f1_candidate": 0.4,
+  "roc_auc_macro": 0.9077106206672497,
+  "roc_auc_weighted": 0.92502289440237,
+  "classification_report": "                precision    recall  f1-score   support\n\n     CONFIRMED       0.89      0.80      0.84       352\nFALSE POSITIVE       1.00      0.94      0.97       163\n     CANDIDATE       0.32      0.52      0.40        71\n\n      accuracy                           0.81       586\n     macro avg       0.74      0.76      0.74       586\n  weighted avg       0.85      0.81      0.82       586\n"
+}
