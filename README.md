@@ -42,7 +42,7 @@ exoplanet-vetting/
 │
 ├── data/
 │   └── raw/
-│       └── koi_data.csv          ← place downloaded dataset here
+│       └── koi_data.csv          
 │
 ├── src/
 │   ├── utils/
