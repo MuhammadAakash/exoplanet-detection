@@ -87,11 +87,6 @@ cd exoplanet-vetting
 pip install -r requirements.txt
 ```
 
-**3. Place the dataset**
-
-Download `koi_data.csv` from the NASA Exoplanet Archive and place it in `data/raw/`.
-
----
 
 ## Dependencies
 
