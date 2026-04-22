@@ -32,7 +32,6 @@ The **Genesis CNN** is the primary contribution — a dual-branch Conv1D archite
 - **Size:** 3,901 rows × 141 columns (raw) → 3,900 rows × 37 features (after preprocessing)
 - **Target:** `koi_disposition` — CONFIRMED / FALSE POSITIVE / CANDIDATE
 
-> The dataset is not included in this repository due to file size. Download it directly from the NASA Exoplanet Archive link above and place it in the `data/raw/` directory.
 
 ---
 
